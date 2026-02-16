@@ -3,7 +3,6 @@ import React from 'react';
 import { RiHeartLine, RiStarFill, RiTruckFill, RiFireFill, RiCoupon3Fill, RiWallet3Fill, RiTimeFill } from "react-icons/ri";
 import { TbBasketDiscount } from "react-icons/tb";
 
-// Resim listesi (Aynı kalıyor)
 export const FURNITURE_IMAGES = [
   "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=600",
   "https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&q=80&w=600",
@@ -11,8 +10,6 @@ export const FURNITURE_IMAGES = [
   "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&q=80&w=600",
   "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?auto=format&fit=crop&q=80&w=600",
   "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=600",
-  "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&q=80&w=600",
-  "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=600",
 ];
 
 const ProductCard = ({ product }) => {
@@ -22,7 +19,6 @@ const ProductCard = ({ product }) => {
   return (
     <div className="group flex flex-col bg-white border border-transparent hover:border-gray-200 hover:shadow-xl rounded-lg p-2 transition-all duration-300 cursor-pointer h-full relative">
       
-      {/* --- 1. GÖRSEL ALANI --- */}
       <div className="relative w-full aspect-[2/3] rounded-md overflow-hidden bg-gray-100 mb-2">
         <img 
           src={selectedImage}
@@ -31,12 +27,10 @@ const ProductCard = ({ product }) => {
           loading="lazy"
         />
 
-        {/* Kalp Butonu */}
         <button className="absolute top-2 right-2 w-7 h-7 bg-white rounded-full shadow-md flex items-center justify-center text-gray-400 hover:text-orange-600 transition-colors z-20">
             <RiHeartLine size={16} />
         </button>
 
-        {/* --- SOL ÜST ROZETLER (YUVARLAK) --- */}
         {product.badges.includes("Flaş Ürün") && (
              <div className="absolute top-2 left-2 w-10 h-10 bg-purple-600 text-white rounded-full flex flex-col items-center justify-center shadow-md z-10 border-2 border-white">
                 <span className="text-[8px] font-bold leading-none">FLAŞ</span>
@@ -50,7 +44,6 @@ const ProductCard = ({ product }) => {
              </div>
         )}
 
-        {/* --- RESİM ALTI BARI (SARI/TURUNCU ŞERİT) --- */}
         {product.bottomBarText && (
           <div className={`absolute bottom-0 left-0 right-0 py-1 px-2 flex items-center justify-center gap-1 text-[9px] font-bold text-white z-10 ${product.bottomBarColor === 'yellow' ? 'bg-yellow-500' : 'bg-orange-500'}`}>
              <RiTimeFill size={10} />
@@ -70,7 +63,6 @@ const ProductCard = ({ product }) => {
              </h3>
         </div>
 
-        {/* Sosyal Kanıt (Ateş ikonu + İnceleyen kişi sayısı) */}
         {product.socialProof && (
           <div className="flex items-center gap-1 mb-1.5">
             <RiFireFill className="text-red-500" size={12} />
@@ -78,7 +70,6 @@ const ProductCard = ({ product }) => {
           </div>
         )}
 
-        {/* Yıldızlar & Kargo Bedava */}
         <div className="flex items-center gap-2 mb-2">
             <div className="flex items-center gap-0.5">
               <div className="flex text-yellow-400 text-[10px]">
@@ -87,7 +78,6 @@ const ProductCard = ({ product }) => {
               <span className="text-[9px] text-gray-400">({product.reviews})</span>
             </div>
             
-            {/* Kargo Bedava (Gri kutucuk değil, ikonlu yazı) */}
             {product.badges.includes("Kargo Bedava") && (
               <div className="flex items-center gap-0.5 text-[9px] text-gray-600 font-semibold bg-gray-100 px-1 py-0.5 rounded">
                 <RiTruckFill size={10} />
@@ -98,7 +88,6 @@ const ProductCard = ({ product }) => {
 
         {/* Fiyat Alanı */}
         <div className="mt-auto">
-            {/* Kampanya Yazıları (İKONLU & RENKLİ YAZI) */}
             <div className="flex flex-col gap-0.5 mb-1.5 min-h-[16px]">
               {product.campaigns && product.campaigns.map((camp, idx) => (
                 <div key={idx} className={`flex items-center gap-1 text-[10px] font-bold ${camp.colorClass}`}>
